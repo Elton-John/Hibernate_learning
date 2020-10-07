@@ -12,11 +12,20 @@ public class BookDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void saveBook (Book book){
+    public void saveBook(Book book) {
         entityManager.persist(book);
     }
 
-    public Book findById(Long id){
-       return entityManager.find(Book.class, id);
+    public Book findById(Long id) {
+        return entityManager.find(Book.class, id);
+    }
+
+    public void update(Book book) {
+        entityManager.merge(book);
+    }
+
+    public void delete(Book book) {
+        entityManager.remove(entityManager.contains(book) ?
+                book : entityManager.merge(book));
     }
 }

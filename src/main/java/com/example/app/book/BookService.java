@@ -20,4 +20,16 @@ public class BookService {
     public Book findById(Long id) {
         return bookDao.findById(id);
     }
+
+    public Book update(Long id, String title){
+        Book book = bookDao.findById(id);
+        book.setTitle(title);
+        bookDao.update(book);
+        return book;
+    }
+
+    public void delete(Long id){
+        Book book = bookDao.findById(id);
+        bookDao.delete(book);
+    }
 }

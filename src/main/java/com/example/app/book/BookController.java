@@ -29,4 +29,18 @@ public class BookController {
         return book.toString();
     }
 
+    @GetMapping("/update/{id}/{title}")
+    @ResponseBody
+    public String update(@PathVariable Long id, @PathVariable String title){
+        Book book = bookService.update(id, title);
+        return String.format("book (id = %d) updated", book.getId());
+    }
+
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    public String delete(@PathVariable Long id){
+        bookService.delete(id);
+        return "deleted";
+    }
+
 }
