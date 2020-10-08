@@ -1,12 +1,10 @@
 package com.example.app.book;
 
+import com.example.app.publisher.Publisher;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Setter
@@ -18,6 +16,9 @@ public class Book {
     private String title;
     private int rating;
     private String description;
+
+    @ManyToOne
+    private Publisher publisher;
 
     @Override
     public String toString() {
