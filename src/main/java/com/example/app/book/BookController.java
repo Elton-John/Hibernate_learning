@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -41,6 +42,13 @@ public class BookController {
     public String delete(@PathVariable Long id){
         bookService.delete(id);
         return "deleted";
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    public String findAll(){
+        List<Book> books = bookService.findAll();
+        return books.toString();
     }
 
 }
