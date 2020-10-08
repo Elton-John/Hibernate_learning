@@ -1,5 +1,7 @@
 package com.example.app.book;
 
+import com.example.app.author.Author;
+import com.example.app.author.AuthorDao;
 import com.example.app.publisher.Publisher;
 import com.example.app.publisher.PublisherDao;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class BookService {
     private final BookDao bookDao;
     private final PublisherDao publisherDao;
+    private final AuthorDao authorDao;
 
     public Book add() {
         Book book = new Book();
@@ -20,6 +23,12 @@ public class BookService {
         publisher.setName("nazwa wydawnictwa");
         publisherDao.savePublisher(publisher);
         book.setPublisher(publisher);
+        Author author1 = authorDao.findById(1L);
+        Author author2 = authorDao.findById(2L);
+        book.getAuthorList().add(author1);
+        book.getAuthorList().add(author2);
+
+
         bookDao.saveBook(book);
         return book;
     }

@@ -1,10 +1,13 @@
 package com.example.app.book;
 
+import com.example.app.author.Author;
 import com.example.app.publisher.Publisher;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -19,6 +22,10 @@ public class Book {
 
     @ManyToOne
     private Publisher publisher;
+    @ManyToMany
+    @JoinTable(name = "books_authors", joinColumns = @JoinColumn(name = "book_id"),
+    inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> authorList = new ArrayList<>();
 
     @Override
     public String toString() {
