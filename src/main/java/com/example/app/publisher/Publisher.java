@@ -19,4 +19,10 @@ public class Publisher {
     @OneToMany(mappedBy = "publisher")
     private List<Book> bookList;
 
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

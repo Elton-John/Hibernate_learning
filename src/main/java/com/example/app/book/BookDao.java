@@ -36,4 +36,37 @@ public class BookDao {
         return query.getResultList();
     }
 
+    public List<Book> getRatingList(int rating) {
+        Query query = entityManager.createQuery("SELECT b FROM Book b WHERE b.rating>:rating");
+        query.setParameter("rating", rating);
+        return query.getResultList();
+    }
+
+//    Uzupełnij klasę BookDao o metodę do pobierania listy
+//    wszystkich książek, które mają jakiegokolwiek wydawcę.
+
+    public List<Book> getBooksWithPublisher() {
+        Query query = entityManager.createQuery("SELECT b FROM Book b JOIN b.publisher ");
+        return query.getResultList();
+    }
+
+//    Uzupełnij klasę BookDao o metodę do pobierania listy
+//    wszystkich książek, które mają określonego w parametrze wydawcę.
+
+
+    public List<Book> getBooksByPublisherId(Long id) {
+        Query query = entityManager.createQuery("SELECT b FROM Book b JOIN b.publisher WHERE b.publisher.id =:id");
+        query.setParameter("id", id);
+        return query.getResultList();
+    }
+//    Uzupełnij klasę BookDao o metodę do pobierania listy
+//    wszystkich książek, które mają określonego w parametrze autora.
+
+    public List<Book> getBooksByAuthorId(Long id) {
+        Query query = entityManager.createQuery("SELECT b FROM Book b JOIN b.authorList authorList where authorList.id=:id");
+        query.setParameter("id", id);
+        return query.getResultList();
+
+    }
+
 }

@@ -51,7 +51,23 @@ public class BookService {
         bookDao.delete(book);
     }
 
-    public List<Book> findAll(){
+    public List<Book> findAll() {
         return bookDao.findAll();
+    }
+
+    public List<Book> getRatingList(int rating) {
+        return bookDao.getRatingList(rating);
+    }
+
+    public List<Book> getBooksWithPublisher() {
+        return bookDao.getBooksWithPublisher();
+    }
+
+    public List<Book> getBooksByPublisherId(Long id) {
+        return bookDao.getBooksByPublisherId(id);
+    }
+
+    public List<Book> getBooksByAuthorId(Long id) {
+        return bookDao.getBooksByAuthorId(id);
     }
 }

@@ -22,6 +22,7 @@ public class Book {
 
     @ManyToOne
     private Publisher publisher;
+
     @ManyToMany
     @JoinTable(name = "books_authors", joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -34,6 +35,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", rating=" + rating +
                 ", description='" + description + '\'' +
+                ", publisher=" + publisher +
                 '}';
     }
 }
