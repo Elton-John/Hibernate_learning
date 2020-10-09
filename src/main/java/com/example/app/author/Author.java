@@ -20,4 +20,13 @@ public class Author {
     private String lastName;
     @ManyToMany (mappedBy = "authorList")
     private List<Book> bookList = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

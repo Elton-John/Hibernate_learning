@@ -4,6 +4,8 @@ import com.example.app.book.Book;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class PublisherService {
@@ -31,5 +33,9 @@ public class PublisherService {
     public void delete(Long id) {
         Publisher publisher = publisherDao.findById(id);
         publisherDao.delete(publisher);
+    }
+
+    public List<Publisher> findAll() {
+        return publisherDao.findAll();
     }
 }
