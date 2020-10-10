@@ -14,16 +14,22 @@
 </head>
 <body>
 <form:form modelAttribute="book" method="post">
+    <p>
     <form:label path="title">Title: </form:label>
-    <form:input path="title" />
-
+    <form:input path="title"/>
+    </p><p>
     <form:label path="description">Description:</form:label>
     <form:input path="description"/>
-
+</p><p>
     <form:label path="publisher">Publisher</form:label>
     <form:select path="publisher.id" items="${publishers}" itemLabel="name" itemValue="id"/>
-
+</p><p>
+    <form:label path="authorList">Author</form:label>
+    <form:select path="authorList" items="${authors}" itemLabel="lastName" itemValue="id"/>
+    <a href="/author/form/main"> Can't find? Add new author</a>
+</p><p>
     <form:button type="submit">Save</form:button>
+</p>
 </form:form>
 
 </body>

@@ -1,6 +1,7 @@
 package com.example.config;
 
 
+import com.example.app.author.AuthorConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -45,13 +46,13 @@ public class AppConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(getPublisherConverter());
-//    }
-//    @Bean
-//    public AuthorConverter getPublisherConverter() {
-//        return new AuthorConverter();
-//    }
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(getAuthorConverter());
+    }
+    @Bean
+    public AuthorConverter getAuthorConverter() {
+        return new AuthorConverter();
+    }
 
 }

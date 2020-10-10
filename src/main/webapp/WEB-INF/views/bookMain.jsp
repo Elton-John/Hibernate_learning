@@ -22,6 +22,10 @@ books:
         <th>TITLE</th>
         <th>DESCRIPTION</th>
         <th>PUBLISHER</th>
+        <th>AUTHOR</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+
     </tr>
     <c:forEach var="book" items="${books}">
     <tr>
@@ -29,13 +33,16 @@ books:
         <td>${book.title}</td>
         <td>${book.description}</td>
         <td>${book.publisher.name}</td>
-        <td> <a href="edit/${book.id}"> EDIT</a> </td>
-        <td> <a href="delete/submit/${book.id}"> DELETE</a> </td>
+<%--        <td>${book.authorList} </td>--%>
+        <td><a href="edit/${book.id}"> EDIT</a></td>
+        <td><a href="delete/submit/${book.id}"> DELETE</a></td>
     <tr>
         </c:forEach>
 </table>
 
+<h1>
 <a href="add">ADD NEW BOOK</a>
+</h1>
 
 <%--<c:forEach items="${books}" var="book">--%>
 <%--   <p>${book.id} ${book.title} ${book.description} </p>--%>

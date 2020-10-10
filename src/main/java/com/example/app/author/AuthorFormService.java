@@ -7,14 +7,11 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class AuthorService {
-
+public class AuthorFormService {
     private final AuthorDao authorDao;
 
-    public Author add() { Author author = new Author();
-        author.setFirstName("Imię autora");
-        author.setLastName("Nazwisko");
-               authorDao.saveAuthor(author);
+    public Author add(Author author) {
+        authorDao.saveAuthor(author);
         return author;
     }
 
@@ -22,20 +19,19 @@ public class AuthorService {
         return authorDao.findById(id);
     }
 
-    public Author update(Long id, String lastName){
-        Author author = authorDao.findById(id);
-        author.setLastName(lastName);
+    public Author update(Long id, Author author) {
         authorDao.update(author);
         return author;
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         Author author = authorDao.findById(id);
         authorDao.delete(author);
     }
 
     public List<Author> findAll() {
-       return authorDao.findAll();
+        return authorDao.findAll();
 
     }
+
 }
