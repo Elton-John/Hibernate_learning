@@ -6,16 +6,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
-public class Book {
+public class Book  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+   // @Size(min = 2, max = 10, message = "od 2 do 10 znaków")
+    @Size(min = 3)
     private String title;
     private int rating;
     private String description;
@@ -38,4 +42,6 @@ public class Book {
                 ", publisher=" + publisher +
                 '}';
     }
+
+
 }

@@ -2,14 +2,21 @@ package com.example.app.book;
 
 import com.example.app.author.Author;
 import com.example.app.author.AuthorService;
+import com.example.app.person.Person;
 import com.example.app.publisher.Publisher;
 import com.example.app.publisher.PublisherService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Valid;
+import javax.xml.validation.Validator;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @AllArgsConstructor
@@ -19,6 +26,8 @@ public class BookFormController {
     private final BookFormService bookFormService;
     private final PublisherService publisherService;
     private final AuthorService authorService;
+//    //@Autowired
+//    Validator validator;
 
 
     @GetMapping("/main")
@@ -38,7 +47,10 @@ public class BookFormController {
     }
 
     @PostMapping("/add")
-    public String add(Book book) {
+    public String add(@Valid Book book, BindingResult result) {
+        if (result.hasErrors()) {
+            return "bookForm";
+        }
         bookFormService.add(book);
         return "redirect:/book/form/main";
     }

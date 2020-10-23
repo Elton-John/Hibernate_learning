@@ -26,6 +26,7 @@
 </p><p>
     <form:label path="authorList">Author</form:label>
     <form:select path="authorList" items="${authors}" itemLabel="lastName" itemValue="id"/>
+
     <a href="/author/form/main"> Can't find? Add new author</a>
 </p><p>
     <form:button type="submit">Save</form:button>
